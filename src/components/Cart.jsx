@@ -10,26 +10,29 @@ const Cart = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <div style={{ marginBottom: "50px" }}></div>
       <h1 style={{ textAlign: "center", marginBottom: "17px" }}>Cart Items</h1>
-      <div className="row offset-2">
+      <div className="row">
         {cartItems.map((item) => (
-          <div
-            className="row card mx-2 mb-4 col-lg-3 col-md-4 col-sm-6"
-            key={item.id}
-            style={{ width: "18rem" }}
-          >
-            <img src={item.image} alt="img" width={"150px"} height={"150px"} />
-            <div className="card-body">
-              <h4>{item.title}</h4>
-              <h5>{item.price}</h5>
-              <button
-                className="btn btn-danger"
-                onClick={() => handleRemove(item.id)}
-              >
-                Remove
-              </button>
+          <div className="col-lg-3 col-md-4 col-sm-6 mb-4" key={item.id}>
+            <div className="card h-100">
+              <img
+                src={item.image}
+                alt={item.title}
+                className="card-img-top"
+                style={{ width: "150px", height: "200px", objectFit: "cover" }}
+              />
+              <div className="card-body">
+                <h4 className="card-title">{item.title}</h4>
+                <h5 className="card-text">${item.price}</h5>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleRemove(item.id)}
+                >
+                  Remove
+                </button>
+              </div>
             </div>
           </div>
         ))}
